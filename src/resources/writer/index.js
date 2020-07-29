@@ -10,6 +10,7 @@ require('./update-writer').register(router);
 require('./get-all').register(router);
 require('./book-add').register(router);
 require('./books-update').register(router);
+require('./get-sorted-list').register(router);
 
 
 module.exports = router.routes();
