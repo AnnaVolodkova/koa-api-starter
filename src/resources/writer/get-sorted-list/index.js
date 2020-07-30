@@ -19,10 +19,10 @@ async function handler(ctx) {
     })
   );
 
-  const numberOfAllDocuments = await writerService.count();
+  const numberOfAllDocuments = writersList.count;
 
   ctx.body = {
-    data: writersList,
+    data: writersList.results,
     meta: {
       numberOfAllDocuments,
     },
