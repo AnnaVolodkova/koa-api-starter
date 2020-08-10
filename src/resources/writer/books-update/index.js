@@ -1,10 +1,19 @@
 const writerService = require('../writer.service');
 
 async function handler(ctx) {
-  const { _id, books } = ctx.request.body;
-  ctx.body = await writerService.update({ _id }, { $set: { books } });
+  const {
+    firstName, lastName, age, books,
+  } = ctx.request.body;
+  ctx.body = await writerService._collection.update(
+    { _id: ctx.params.id },
+    {
+      $set: {
+        firstName, lastName, age, books,
+      },
+    },
+  );
 }
 
 module.exports.register = (router) => {
-  router.post('/books', handler);
+  router.post('/books/:id', handler);
 };
