@@ -7,7 +7,7 @@ async function handler(ctx) {
     firstName, lastName, age, books,
   } = ctx.request.body;
 
-  books.map((item) => {
+  const booksWithId  = books.map((item) => {
     return {
       ...item,
       _id: uid(),
@@ -15,7 +15,7 @@ async function handler(ctx) {
   });
 
   await writerService.create({
-    firstName, lastName, age, books,
+    firstName, lastName, age, booksWithId,
   });
   ctx.status = 200;
   ctx.body = 'Ok';

@@ -7,7 +7,7 @@ async function handler(ctx) {
     firstName, lastName, age, books,
   } = ctx.request.body;
 
-  books.map((item) => {
+  const booksWithId = books.map((item) => {
     return {
       ...item,
       _id: uid(),
@@ -18,7 +18,7 @@ async function handler(ctx) {
     { _id: ctx.params.id },
     {
       $set: {
-        firstName, lastName, age, books,
+        firstName, lastName, age, booksWithId,
       },
     },
   );
